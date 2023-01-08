@@ -32,7 +32,7 @@ Black Shoes: 8QU23W6P-NQPUYMDN-NHZW28UF-H23YMKG3-KKNDVVLT
 
 Sunglasses: ZEW5M525-CBSDA59D-JB54H446-3DE5AEZD-DCDCC48P
 ```
-We have 3 Gloves, 4 Pants, 8 Shoes and a Sunglasses codes. We want to bundle them, which means to get maximum number of bundles that can be created.
+We have 3 Gloves, 4 Pants, 8 Shoes, and a Sunglasses code. We want to bundle them, which means to get maximum number of bundles that can be created.
 ### With Default Settings
 If you don't change anything, default settings of the script creates a bundle like this:
 ```markdown
@@ -43,7 +43,7 @@ Sunglasses: ZEW5M525-CBSDA59D-JB54H446-3DE5AEZD-DCDCC48P
 ```
 The script created only 1 bundle because the category with the minimum number of codes was the _sunglasses_ category. Since it contains only one code, only one package can be created by obtaining one code from each category. It saves bundled codes as a .txt file to the script directory. 
 
-The remaining codes which aren't bundled also be saved the same directory, like this:
+The remaining codes that aren't bundled will also be saved in the same directory, like this:
 ```markdown
 Red Gloves: YTJUK64P-8FVBKWKA-F2S4CECA-HU88F59H-ETTL8BQ4
 Red Gloves: 7AD2VRM5-AVL55U89-C77WW5N6-33Z2S59C-W8TMNJFT
@@ -62,8 +62,7 @@ Black Shoes: 8QU23W6P-NQPUYMDN-NHZW28UF-H23YMKG3-KKNDVVLT
 ```
 —
 ### With Custom Settings
-You can determine how many codes from which category each package will contain.
-If you don't want to contain sunglasses category, one each of the red gloves, two each of the green pants and four each of the black shoes, the bundled output file would be:
+You can determine how many codes from each category each package will contain. If you don't want to include the sunglasses category, but do want one each of the red gloves, two each of the green pants, and four each of the black shoes, the bundled output file would be:
 ```markdown
 --
 Red Gloves: A98FE24N-ZRFZVB65-XPKUJB74-4LWC4HJH-RTVCDAWB
@@ -94,7 +93,7 @@ Sunglasses: ZEW5M525-CBSDA59D-JB54H446-3DE5AEZD-DCDCC48P
 Simply run the .py file via terminal. You can either convert bundler.py to exe for creating one-click software,with projects like auto-py-to-exe.
 
 ### Contributing
-I am always open to contributions and welcome any and all suggestions or improvements to my projects. If you have an idea for a feature or a bug fix, please feel free to submit a pull request.
+Simply run the .py file via terminal. You can also convert bundler.py to an exe for creating a one-click software using projects like auto-py-to-exe.
 
 
 _License: The MIT License (MIT), Copyright (c) 2023 Burak Koroglu_
