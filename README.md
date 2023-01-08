@@ -86,3 +86,11 @@ Unbundled output file:
 Red Gloves: 7AD2VRM5-AVL55U89-C77WW5N6-33Z2S59C-W8TMNJFT
 Sunglasses: ZEW5M525-CBSDA59D-JB54H446-3DE5AEZD-DCDCC48P
 ```
+### Installation
+Simply run the .py file via terminal. You can either convert bundler.py to exe for creating one-click software,with projects like auto-py-to-exe.
+
+### Contributing
+I am always open to contributions and welcome any and all suggestions or improvements to my projects. If you have an idea for a feature or a bug fix, please feel free to submit a pull request.
+
+
+_License: The MIT License (MIT), Copyright (c) 2023 Burak Koroglu_
