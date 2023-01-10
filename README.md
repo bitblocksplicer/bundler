@@ -1,9 +1,10 @@
-# Bundler
+# Bundler (No Logging)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) ![GitHub](https://img.shields.io/github/license/bitblocksplicer/bundler)
 
 Bundler is a script written in Python, in order to bundle **codes**.
+This version of the script has no logging.
 
 ## The Main Idea
 You can simply think like we have a text file with categories containing one or more codes. This is the input file.
