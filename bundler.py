@@ -1,9 +1,7 @@
 import os
 import platform
 from collections import Counter
-import logging
 
-logging.basicConfig(filename="debug.log", filemode= "w", format="%(asctime)s - %(message)s",level=logging.ERROR)
 def clearing(): #clears the screen based on the OS.
     if platform.system() == "Linux":
         return os.system("clear")
@@ -25,8 +23,7 @@ def getcategories(): #gets categories from before the ":" thing and adds them to
     counts.update(Counter(categories))
     try:
         counts.pop("\n")
-    except Exception as err:
-        logging.debug(err) 
+    except: 
         pass 
     categories = list(dict.fromkeys(categories)) #removing the duplicates in categories list.
 
@@ -50,13 +47,14 @@ def creatingbundles():
         for i in categories:
             try:
                 findthemaxforcust.append(int(len(dct[i])/custommodelist[i]))
-            except Exception as err:
-                logging.error(err)
+            except:
+                
                 pass
         try:
             maxforcust = min(findthemaxforcust)
-        except Exception as err:
-            logging.error(err)
+        except:
+            pass
+            
         input("Based on your selections, I can create at most {} bundles.".format(maxforcust))
         for i in range(maxforcust): #bundle count
             print(line)
@@ -68,8 +66,8 @@ def creatingbundles():
                         print(dct[categories[y]][0],end="") #bundles printing on terminal
                         file2.write(str(dct[categories[y]][0])) #bundles saving into the file
                         dct[categories[y]].pop(0) #and removing after saved into the file.
-                except Exception as err:
-                    logging.error(err)
+                except:
+                    
                     pass
         file2.close()
         if not unbundledemptycheck() == False:
@@ -84,7 +82,7 @@ def creatingbundles():
             try:
                 categories.pop(categories.index("\n"))
             except ValueError as err:
-                logging.error(err)
+                
                 pass
         file2 = open("{}.txt".format(str(filename)),"w")
         for i in range(min(counts.values())):
@@ -158,11 +156,10 @@ Type d to done selecting.""")
                                     pass
                                 else:
                                     multipfiles.append(i[1])
-                        except Exception as err:
-                            logging.debug(err)
+                        except:
+                            pass
                     
-            except Exception as err:
-                logging.debug(err)
+            except:
                 pass                      
 
         elif askselect == "d":
@@ -172,7 +169,7 @@ Type d to done selecting.""")
                     allcodes.extend(file.readlines())
                     file.close()
                 break
-            except Exception as err:
+            except:
                 input("an error occurred. exiting.")
                 exit()
 
@@ -187,8 +184,8 @@ Type d to done selecting.""")
                             multipfiles.append(i[1])
                         else:
                             pass
-                except Exception as err:
-                    logging.debug(err)
+                except:
+                    pass
             print("Added files to arrange:",multipfiles,sep="\n")
             continue
 
@@ -207,8 +204,8 @@ def unbundledemptycheck():
             for y in codelist:
                 try:
                     file3.write(y)
-                except Exception as err:
-                    logging.error(err)
+                except:
+                    
                     pass
         file3.close()
     else:
@@ -217,8 +214,9 @@ def unbundledemptycheck():
 def custommode():
     try:
         categories.pop(categories.index("\n"))
-    except Exception as err:
-        logging.error(err)
+    except:
+        pass
+        
     for i in categories:
         print(i)
         dupselect = input(
@@ -228,8 +226,9 @@ def custommode():
                 custommodelist[i] = int(dupselect)
             else:
                 pass
-        except Exception as err:
-            logging.error(err)
+        except:
+            pass
+            
     print(custommodelist)
     flag.append(True)
 
@@ -271,20 +270,18 @@ while True:
     for i in range(50):
         try:
             addingtodct(i)
-        except Exception as err:
-            logging.info(err)
+        except:
             pass
     try:
         dct.pop("\n")
-    except Exception as err:
-        logging.error(err)
+    except:
+        
         pass
     creatingbundles()
     for i in range(250):
         try:
             getremainings(i)
-        except Exception as err:
-            logging.info(err)
+        except:
             pass
     if not unbundledemptycheck() == False:
         print("Remaining codes exported as UNBUNDLED.txt to the same directory")
