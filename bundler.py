@@ -122,7 +122,7 @@ def listeleme(): #Prints how many codes in categories, and asks to enter custom 
 [Enter] to continue
 [C] to custom selection mode
 
-Input   :""")
+Input  :""")
         if not whatdoyoudo:
             pass
         elif whatdoyoudo == "c" or whatdoyoudo == "C":
@@ -144,7 +144,8 @@ def multiplefiles(): #function to show the main file selection screen.
         print("Added files to arrange:",multipfiles,sep="\n")
         print("-"*10)
         askselect = input("""Type the number of the file to select. 
-Type d to done selecting.""")
+Type [d] to done selecting.
+Input:  """)
         
         print("Added files to arrange:",multipfiles,sep="\n") 
         if "," in askselect:
@@ -173,6 +174,7 @@ Type d to done selecting.""")
                     file.close()
                 break
             except Exception as err:
+                logging.error(err)
                 input("an error occurred. exiting.")
                 exit()
 
@@ -222,7 +224,7 @@ def custommode():
     for i in categories:
         print(i)
         dupselect = input(
-            f"How many codes you want each bundle for {i.title()} category?")
+            f"How many codes you want each bundle for {i.title()} category?     :")
         try:
             if not dupselect == "0":
                 custommodelist[i] = int(dupselect)
