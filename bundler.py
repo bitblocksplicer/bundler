@@ -3,15 +3,15 @@ import platform
 from collections import Counter
 import logging
 
-logging.basicConfig(filename="debug.log", filemode= "w", format="%(asctime)s - %(message)s",level=logging.DEBUG)
-def clearing():
+logging.basicConfig(filename="debug.log", filemode= "w", format="%(asctime)s - %(message)s",level=logging.ERROR)
+def clearing(): #clears the screen based on the OS.
     if platform.system() == "Linux":
         return os.system("clear")
     else:
         return os.system("cls")
         
 allcodes = list()
-categories = list() #includes before the ':' things in the list. not duplicates. it can be infinite. will be useful to create lists for each of them and for loop to append items.
+categories = list() #includes before the ':' things in the list. not duplicates. It will be useful to create lists for each of them and iterate to append items.
 counts = dict() #this dictionary has category names with its counts. it's just for information print and getting the category which has the least codes in order to get maximum number of bundles.
 dct = dict() #this dictionary will have lists that includes codes for each category.
 custommodelist = dict() # this dictionary includes how much codes will be included in each category in each bundle.
@@ -20,15 +20,15 @@ findthemaxforcust = list() #list to find "at most" bundle count by using min() m
 def getcategories(): #gets categories from before the ":" thing and adds them to categories list
     global categories
     for i in allcodes:
-        splitted = i.split(":")[0]
-        categories.append(splitted)
+        splitted = i.split(":")[0] #splitting the lines with ":" and geting the first element of it
+        categories.append(splitted) #adding to categories list.
     counts.update(Counter(categories))
     try:
         counts.pop("\n")
     except Exception as err:
         logging.debug(err) 
         pass 
-    categories = list(dict.fromkeys(categories))
+    categories = list(dict.fromkeys(categories)) #removing the duplicates in categories list.
 
 def createlists(): #adds lists to dct dictionary
     for i in categories:
@@ -46,7 +46,7 @@ def creatingbundles():
     filename = input("Bundled filename    :")
     line = "-"*10
     if True in flag:
-        file2 = open("{}.txt".format(str(filename)),"w")
+        file2 = open(f"{str(filename)}.txt", "w")
         for i in categories:
             try:
                 findthemaxforcust.append(int(len(dct[i])/custommodelist[i]))
@@ -65,9 +65,9 @@ def creatingbundles():
             for y in range(len(categories)): #categories in bundle count
                 try:
                     for z in range(custommodelist[categories[y]]): #lines in bundle count
-                        print(dct[categories[y]][0],end="")
-                        file2.write(str(dct[categories[y]][0]))
-                        dct[categories[y]].pop(0)
+                        print(dct[categories[y]][0],end="") #bundles printing on terminal
+                        file2.write(str(dct[categories[y]][0])) #bundles saving into the file
+                        dct[categories[y]].pop(0) #and removing after saved into the file.
                 except Exception as err:
                     logging.error(err)
                     pass
@@ -108,13 +108,13 @@ def getremainings(num):
         for i in range(maxbundlenum):
             codelist.pop(0)
 
-def listeleme():
+def listeleme(): #Prints how many codes in categories, and asks to enter custom mode.
         print("-"*10)
         for i in counts.items():
             print(i[0],"-","x{}".format(i[1]))
         try:
-            print("\n","It means I can create at most {} bundles.".format(min(counts.values())))
-        except Exception as err:
+            print("\n", f"It means I can create at most {min(counts.values())} bundles.")
+        except:
             input("You didn't choose any file. [Enter] to return main menu.")
             return False
         print("-"*10)
@@ -129,10 +129,9 @@ Input   :""")
             custommode()
 
 
-def multiplefiles():
+def multiplefiles(): #function to show the main file selection screen.
     multipfiles = list()
     clearing()
-    print("Multiple file select mode")
     print("The list of files in this dir:")
     arr = os.listdir(".")
     for i in enumerate(arr):
@@ -222,7 +221,8 @@ def custommode():
         logging.error(err)
     for i in categories:
         print(i)
-        dupselect = input("How many codes you want each bundle for {} category?".format(i.title()))
+        dupselect = input(
+            f"How many codes you want each bundle for {i.title()} category?")
         try:
             if not dupselect == "0":
                 custommodelist[i] = int(dupselect)
@@ -236,8 +236,8 @@ def custommode():
 
 
 clearing()
-print("(Operating system is detected as {}.)".format(platform.system()))
-print("v1.2.1")
+print(f"(Operating system is detected as {platform.system()}.)")
+print("v1.3.1")
 print("""
 This script organizes group of codes. Gets one code from a group and add it to one under the other. Original file will stay the same.
 So input data will be:             .txt file with grouped codes
