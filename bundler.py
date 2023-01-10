@@ -81,8 +81,7 @@ def creatingbundles():
         for i in range(len(categories)*2):
             try:
                 categories.pop(categories.index("\n"))
-            except ValueError as err:
-                
+            except:
                 pass
         file2 = open("{}.txt".format(str(filename)),"w")
         for i in range(min(counts.values())):
@@ -142,7 +141,8 @@ def multiplefiles(): #function to show the main file selection screen.
         print("Added files to arrange:",multipfiles,sep="\n")
         print("-"*10)
         askselect = input("""Type the number of the file to select. 
-Type d to done selecting.""")
+Type d to done selecting.
+Input   :""")
         
         print("Added files to arrange:",multipfiles,sep="\n") 
         if "," in askselect:
