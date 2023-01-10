@@ -95,5 +95,8 @@ Simply run the .py file via terminal. You can also convert bundler.py to an exe 
 ### Contributing
 I am always open to contributions and welcome any and all suggestions or improvements to my projects. If you have an idea for a feature or a bug fix, please feel free to submit a pull request.
 
+### Other
+Logging is enabled in default. You can get the no-logging version in WithoutLogging branch.
+
 
 _License: The MIT License (MIT), Copyright (c) 2023 Burak Koroglu_
