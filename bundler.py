@@ -115,14 +115,14 @@ def listeleme(): #Prints how many codes in categories, and asks to enter custom 
             input("You didn't choose any file. [Enter] to return main menu.")
             return False
         print("-"*10)
-        whatdoyoudo = input("""
+        fileselectioninput = input("""
 [Enter] to continue
 [C] to custom selection mode
 
 Input   :""")
-        if not whatdoyoudo:
+        if not fileselectioninput:
             pass
-        elif whatdoyoudo == "c" or whatdoyoudo == "C":
+        elif fileselectioninput == "c" or fileselectioninput == "C":
             custommode()
 
 
@@ -197,7 +197,9 @@ def checker():
         
 def unbundledemptycheck():
     if any(checker()):
-        file3 = open("UNBUNDLED.txt","w")
+        global unbundledname
+        unbundledname = input("Pick a filename for unbundled file:  ")
+        file3 = open(f"{unbundledname}.txt", "w")
         for y in range(len(categories)):
             codelist = dct[categories[y]]
             print("\n")
@@ -236,7 +238,7 @@ def custommode():
 
 clearing()
 print(f"(Operating system is detected as {platform.system()}.)")
-print("v1.3.1")
+print("v1.3.5")
 print("""
 This script organizes group of codes. Gets one code from a group and add it to one under the other. Original file will stay the same.
 So input data will be:             .txt file with grouped codes
@@ -251,6 +253,8 @@ while True:
     counts.clear()
     dct.clear()
     custommodelist.clear()
+    findthemaxforcust.clear()
+    flag.clear()
     arr = os.listdir(".")
     clearing()
 
@@ -284,7 +288,7 @@ while True:
         except:
             pass
     if not unbundledemptycheck() == False:
-        print("Remaining codes exported as UNBUNDLED.txt to the same directory")
+        print(f"Remaining codes exported as {unbundledname}.txt to the same directory")
     else:
         print("No files created because there are no code left for unbundled file.")
     input("Sounds cool. [Enter]    ")
@@ -296,7 +300,7 @@ while True:
     if choose == "1":
         continue
     elif choose == "2":
-        input("God saved my böbreks. Press enter to cheers.")
+        print("Terminating...")
         exit()
     else:
         input("You did something wrong. To go back to menu, just press enter.")
