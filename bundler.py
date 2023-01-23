@@ -57,7 +57,8 @@ def creatingbundles():
             maxforcust = min(findthemaxforcust)
         except Exception as err:
             logging.error(err)
-        input("Based on your selections, I can create at most {} bundles.".format(maxforcust))
+        input(
+            f"Based on your selections, I can create at most {maxforcust} bundles.")
         for i in range(maxforcust): #bundle count
             print(line)
             file2.write(str(line))
@@ -73,11 +74,10 @@ def creatingbundles():
                     pass
         file2.close()
         if not unbundledemptycheck() == False:
-            print("Remaining codes exported as UNBUNDLED.txt to the same directory")
+            print(f"Remaining codes exported as {unbundledname}.txt to the same directory")
         else:
             print("No files created because there are no code left for unbundled file.")
-        input("Sounds cool. Exit app: [Enter]    ")
-        exit()
+        input("Sounds cool. [Enter]    ")
         
     else:
         for i in range(len(categories)*2):
@@ -97,7 +97,8 @@ def creatingbundles():
                 file2.write(str(dct[categories[y]][i]))
         file2.close()
         print("\n")
-        print("Bundle creating completed. {}.txt file was saved to the same directory.".format(filename))
+        print(
+            f"Bundle creating completed. {filename}.txt file was saved to the same directory.")
     
 def getremainings(num):
     maxbundlenum = min(counts.values())
@@ -149,9 +150,9 @@ Input:  """)
         
         print("Added files to arrange:",multipfiles,sep="\n") 
         if "," in askselect:
-            girilensayilar = askselect.split(",")
+            inputnumbers = askselect.split(",")
             try:
-                for u in girilensayilar:
+                for u in inputnumbers:
                     for i in enumerate(arr):
                         try:
                             if i[0] == int(u):
@@ -169,7 +170,7 @@ Input:  """)
         elif askselect == "d":
             try:
                 for i in multipfiles:
-                    file = open("{}".format(i))
+                    file = open(f"{i}")
                     allcodes.extend(file.readlines())
                     file.close()
                 break
@@ -293,16 +294,10 @@ while True:
         except Exception as err:
             logging.info(err)
             pass
-    if not unbundledemptycheck() == False:
-        print(f"Remaining codes exported as {unbundledname}.txt to the same directory")
-    else:
-        print("No files created because there are no code left for unbundled file.")
-    input("Sounds cool. [Enter]    ")
     print("""Choose what do you want to do:
         [1] Main Menu
-        [2] Quit
-        >       """)
-    choose = input("Input    :")
+        [2] Quit""")
+    choose = input(">       ")
     if choose == "1":
         continue
     elif choose == "2":
@@ -310,4 +305,4 @@ while True:
         exit()
     else:
         input("You did something wrong. To go back to menu, just press enter.")
-        exit()
+        continue
